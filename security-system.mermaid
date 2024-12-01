@@ -1,0 +1,44 @@
+graph TB
+    subgraph Access_Control
+        Auth[Authentication]
+        MFA[Multi-Factor Auth]
+        RBAC[Role-Based Access]
+    end
+
+    subgraph Network_Security
+        FW[Firewall]
+        WAF[Web Application Firewall]
+        IDS[Intrusion Detection]
+        DDOS[DDoS Protection]
+    end
+
+    subgraph Encryption
+        TLS[TLS/SSL]
+        HSM[Hardware Security Module]
+        KMS[Key Management]
+    end
+
+    subgraph Monitoring
+        SIEM[Security Information]
+        Audit[Audit Logging]
+        Alert[Alert System]
+    end
+
+    User-->Auth
+    Auth-->MFA
+    MFA-->RBAC
+    RBAC-->Resources
+
+    Internet-->FW
+    FW-->WAF
+    WAF-->App
+    IDS-->App
+    DDOS-->App
+
+    App-->TLS
+    TLS-->HSM
+    HSM-->KMS
+
+    App-->SIEM
+    SIEM-->Audit
+    SIEM-->Alert
